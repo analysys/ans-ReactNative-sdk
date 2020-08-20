@@ -1,5 +1,5 @@
 {
-  "name": "react-native-analysys_test",
+  "name": "react-native-analysys",
   "version": "1.0.0",
   "private": false,
   "description": "易观方舟React Native插件",
@@ -9,7 +9,6 @@
   },
   "keywords": [
     "analysys",
-    "analysysagent",
     "易观",
     "方舟"
   ],
