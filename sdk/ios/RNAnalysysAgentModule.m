@@ -50,7 +50,7 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(SDKVersion) {
 /// 设置数据网络上传策略
 /// 默认只要存在网络即会上传，不区分移动网络即WIFI网络
 ///
-/// /// React-Native示例：
+/// React-Native示例：
 /// RNAnalysysAgentModule.setUploadNetworkType(RNAnalysysAgentModule.networkALL)
 ///
 /// @param networkType 网络类型
