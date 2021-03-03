@@ -1,6 +1,6 @@
 {
   "name": "react-native-analysys",
-  "version": "1.0.0",
+  "version": "4.5.0",
   "private": false,
   "description": "易观方舟React Native插件",
   "main": "index.js",
@@ -18,5 +18,5 @@
     "type": "git",
     "url": "git+https://github.com/analysys/ans-ReactNative-sdk.git"
   },
-   "homepage": "https://github.com/analysys/ans-ReactNative-sdk"
+  "homepage": "https://github.com/analysys/ans-ReactNative-sdk"
 }

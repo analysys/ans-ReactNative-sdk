@@ -50,7 +50,7 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(SDKVersion) {
 /// 设置数据网络上传策略
 /// 默认只要存在网络即会上传，不区分移动网络即WIFI网络
 ///
-/// React-Native示例：
+/// /// React-Native示例：
 /// RNAnalysysAgentModule.setUploadNetworkType(RNAnalysysAgentModule.networkALL)
 ///
 /// @param networkType 网络类型
@@ -103,6 +103,20 @@ RCT_EXPORT_METHOD(pageView:(NSString *)pageName) {
   [AnalysysAgent pageView:pageName];
 }
 
+/**
+ 页面自动跟踪
+ 
+ React-Native示例：
+ RNAnalysysAgentModule.pageViewWithArgsAuto("活动页", {"commodityName":"iPhone","commodityPrice":"5000"})
+
+ @param pageName 页面名称
+ @param properties 页面属性
+ */
+RCT_EXPORT_METHOD(pageViewWithArgsAuto:(NSString *)pageName properties:(NSDictionary *)properties) {
+    if([AnalysysAgent isViewAutoTrack]) {
+        [self pageViewWithArgs:pageName properties:properties];
+    }
+}
 
 /**
  事件跟踪
@@ -324,8 +338,27 @@ RCT_EXPORT_METHOD(reset) {
 }
 
 
+RCT_EXPORT_METHOD(viewClicked:(NSNumber * _Nonnull)viewId) {
+  Class allBuryPoint = NSClassFromString(@"ANSAllBuryPoint");
+  SEL allbury_viewClicked = NSSelectorFromString(@"allbury_viewClicked:");
+  if ([allBuryPoint respondsToSelector:allbury_viewClicked]) {
+      [allBuryPoint performSelector:allbury_viewClicked withObject:viewId];
+  }
+  
+  Class visualModule = NSClassFromString(@"ANSVisualSDK");
+  SEL visual_viewClicked = NSSelectorFromString(@"visual_viewClicked:");
+  if ([visualModule respondsToSelector:visual_viewClicked]) {
+      [visualModule performSelector:visual_viewClicked withObject:viewId];
+  }
+}
 
-
+RCT_EXPORT_METHOD(setViewClickableMap:(NSDictionary * _Nonnull)map) {
+    Class visualDataModule = NSClassFromString(@"ANSVisualData");
+    SEL setViewClickableMap = NSSelectorFromString(@"setViewClickableMap:");
+    if ([visualDataModule respondsToSelector:setViewClickableMap]) {
+        [visualDataModule performSelector:setViewClickableMap withObject:map];
+    }
+}
 
 @end
 
