@@ -34,6 +34,27 @@ RCT_EXPORT_MODULE(RNAnalysysAgentModule)
             @"networkALL"  : @(AnalysysNetworkALL)};
 };
 
+- (void)initPageName:(NSString *)pageName {
+    @try {
+        Class pageClass = NSClassFromString(@"ANSPageAutoTrack");
+        SEL shared = NSSelectorFromString(@"shareInstance");
+        if ([pageClass respondsToSelector:shared]) {
+            id page = [pageClass performSelector:shared];
+            if (page) {
+                
+                SEL setRNpage = NSSelectorFromString(@"setRnPageName:");
+                if([page respondsToSelector:setRNpage]) {
+                    [page performSelector:setRNpage withObject:pageName];
+                }
+            }
+        }
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+}
+
 #pragma mark *** 基本配置 ***
 
 /**
@@ -96,10 +117,12 @@ RCT_EXPORT_METHOD(setPageViewBlackListByPages:(NSSet *)controllers) {
  @param properties 页面属性
  */
 RCT_EXPORT_METHOD(pageViewWithArgs:(NSString *)pageName properties:(NSDictionary *)properties) {
+  [self initPageName:pageName];
   [AnalysysAgent pageView:pageName properties:properties];
 }
 
 RCT_EXPORT_METHOD(pageView:(NSString *)pageName) {
+  [self initPageName:pageName];
   [AnalysysAgent pageView:pageName];
 }
 

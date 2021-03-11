@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.source_files = "sdk/ios/*.{h,m}"
   s.requires_arc = true
   s.dependency   "React"
-  s.dependency   "AnalysysAgent", ">= 4.5.8"
+  s.dependency   "AnalysysAgent", ">= 4.5.10"
 
 end
 
