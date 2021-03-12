@@ -31,7 +31,7 @@ var ansClickHookCode = `
         var ReactNative = require('react-native');
         var isActiveEvent = false
         var ansNativeTag = stateNode._nativeTag
-        if (registrationName === 'onTouchEnd' && ReactNative.ansModelEventMap &&ReactNative.ansModelEventMap[ansNativeTag]&&ReactNative.ansModelEventMap[ansNativeTag]['isClick'] === true) {
+        if (registrationName === 'onStartShouldSetResponderCapture' && ReactNative.ansModelEventMap &&ReactNative.ansModelEventMap[ansNativeTag]&&ReactNative.ansModelEventMap[ansNativeTag]['isClick'] === true) {
             var ReactNative = require('react-native');
             var ansModule = ReactNative.NativeModules.RNAnalysysAgentModule
             ansModule && ansModule.viewClicked && ansModule.viewClicked(ansNativeTag);
